@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Esercizio 2</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script>
+        function onSubmit() {
+            if (true) {
+                var inputNome = document.getElementById("name").value;
+                var inputCognome =document.getElementById("surname").value;
+            }
+            console.log("ciao " + inputNome + " " + inputCognome)
+        }
+    </script>
+    <style>
+        h1 {
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1>Compila il modulo!</h1>
+    <label>Inserisci il tuo nome:</label>
+    <input type="text" id="name" placeholder="Inserisci nome" />
+    <br/> <br/>
+    <label>Inserisci il tuo cognome:</label>
+    <input type="text" id="surname" placeholder="Inserisci cognome" />
+    <button onclick="onSubmit()">Invio</button>
+</body>
+
+</html>
