@@ -15,16 +15,15 @@
 </head>
 
 <body>
-        <h1>Compila il modulo!</h1>
-        <label>Inserisci il tuo nome:</label>
-        <input type="text" id="name" placeholder="Inserisci nome" />
-        <br /> <br />
-        <label>Inserisci il tuo cognome:</label>
-        <input type="text" id="surname" placeholder="Inserisci cognome" />
-        <button onclick="onSubmit()">Invio</button>
+    <h1>Compila il modulo!</h1>
+    <label>Inserisci il tuo nome:</label>
+    <input type="text" id="name" placeholder="Inserisci nome" />
+    <br /> <br />
+    <label>Inserisci il tuo cognome:</label>
+    <input type="text" id="surname" placeholder="Inserisci cognome" />
+    <button onclick="onSubmit()">Invio</button>
 
     <script>
-
         function onSubmit() {
             event.preventDefault();
             var inputNome = document.getElementById("name").value;
