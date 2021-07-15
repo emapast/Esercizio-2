@@ -61,6 +61,7 @@
             height: 100px;
             width: 150px;
             background: linear-gradient(to right, #009246 33.33%, #F1F2F1 33.33%, #F1F2F1 66.66%, #CE2B37 66.66%);
+            display: none;
         }
 
         .bandiera_spagnola {
@@ -68,6 +69,8 @@
             width: 150px;
             text-align: justify;
             background: linear-gradient(#ff0000 33.33%, #fbff00 33.33%, #fbff00 66.66%, #ff0000 66.66%);
+            display: none;
+
         }
 
         .bandiera_tedesca {
@@ -75,43 +78,66 @@
             width: 150px;
             text-align: justify;
             background: linear-gradient(#000000 33.33%, #ff0000 33.33%, #ff0000 66.66%, #fffb00ef 66.66%);
+            display: none;
+
         }
 
         .bandiera_francese {
             height: 100px;
             width: 150px;
             background: linear-gradient(to right, #00008B 33.33%, #F1F2F1 33.33%, #F1F2F1 66.66%, #CE2B37 66.66%);
+            display: none;
+
+        }
+
+        .campioni{
+            display: none;
         }
     </style>
 
 
 
     <script type=text/javascript>
-        nazioni = ["Italia", "Germania", "Spagna", "Francia"];
-        console.log(nazioni);
+        let nazioni = ["Italia", "Germania", "Spagna", "Francia"];
+        let cronologia = [];
+
+        
         function onSubmit() {
             let inputNazione = document.getElementById("nazione").value;
             nazioni.forEach((nazione) => {
-                if (nazione === inputNazione) {
+                if (nazione.toUpperCase() === inputNazione.toUpperCase()) {
+                    document.getElementById(nazione.toLowerCase()).style.display = 'block';
+                    if(nazione === "Italia"){
+                        document.getElementById('campioni').style.display = 'block';
+                    }else{
+                        document.getElementById('campioni').style.display = 'none';
+                    }
                     alert("Nazione trovata!");
+                    cronologia.push(nazione);
+                }else{
+                    document.getElementById(nazione.toLowerCase()).style.display = 'none';
                 }
             })
         }
 
         function searchNazione() {
-            if (inputNazione != nazioni){
-                alert("Nessuna corrispondenza");
-            }
-            var elementSearchNazione = document.getElementById("searchNome");
-            if (elementSearchNazione === null){
-            }
+            // if (inputNazione != nazioni){
+            //     alert("Nessuna corrispondenza");
+            // }
+            var elementSearchNazione = document.getElementById("cronologia");
+            // if (elementSearchNazione === null){
+                
+            // }
             var nome = elementSearchNazione.value;
-            if (nazione === ''){
+            if (nome === ''){
                 alert("Inserisci valore del campo nome per effettuare una ricerca");
             }
-            for (var nazione of nazioni) {
-                if (inputNazione === nazione) {
-                    console.log(nazione);
+            for (var nazione of cronologia) {
+                if (nome.toUpperCase() === nazione.toUpperCase()) {
+                    alert("nazione già cercata!");
+                    return;
+                }else{
+                    alert("nazione mai cercata!");
                 }
             }
         }
@@ -143,20 +169,20 @@
             <li>
                 <label>Salva Nazione</label>
                 <input type="text" id="nazione" placeholder="Inserisci Nazione" />
-                <input type="button" value="Invio" onlick="onSubmit()" id="submit" />
+                <input type="button" value="Invio" onclick="onSubmit()" id="submit" />
             </li>
 
             <li>
-                <label>Ricerca Nazione</label>
-                <input type="text" id="inserisci_nazione" placeholder="Inserisci Nazione" />
+                <label>Ricerca in Cronologia</label>
+                <input type="text" id="cronologia" placeholder="Inserisci Nazione" />
                 <input type="button" value="Invio" onclick="searchNazione()" id="submit" />
 
-            </li>
-
-            <div class="bandiera_italiana"></div>
-            <div class="bandiera_francese"></div>
-            <div class="bandiera_spagnola"></div>
-            <div class="bandiera_tedesca"></div>
+            </li>   
+            <div id="italia" class="bandiera_italiana"></div>
+            <div id="campioni" class="campioni" >Campioni d'Europa!!!</div>
+            <div id="francia" class="bandiera_francese"></div>
+            <div id="spagna" class="bandiera_spagnola"></div>
+            <div id="germania" class="bandiera_tedesca"></div>
         </ul>
     </fieldset>
 
