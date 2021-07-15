@@ -2,36 +2,164 @@
 <html>
 
 <head>
+
     <meta charset="utf-8" />
     <title>Esercizio 2</title>
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <style>
+
+    <style type=text/css>
+        * {
+            font-family: 'Lato', 'Helvetica';
+        }
+
+        body {
+            background-color: rgb(245, 245, 245);
+        }
+
+        h1,
+        input {
+            color: #555;
+        }
+
         h1 {
+            font-weight: bold;
+            font-size: 30px;
             text-align: center;
         }
+
+        input {
+            padding: 8px;
+            border: 1px solid rgb(141, 141, 141);
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        fieldset {
+            border: 1px solid rgb(141, 141, 141);
+            border-radius: 5px;
+        }
+
+        .flex-container {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-around;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        #submit {
+            border-radius: 10px 10px 10px 10px;
+            background-color: rgb(44, 212, 114);
+            color: #fff;
+            border: 0px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .bandiera_italiana {
+            height: 100px;
+            width: 150px;
+            background: linear-gradient(to right, #009246 33.33%, #F1F2F1 33.33%, #F1F2F1 66.66%, #CE2B37 66.66%);
+        }
+
+        .bandiera_spagnola {
+            height: 100px;
+            width: 150px;
+            text-align: justify;
+            background: linear-gradient(#ff0000 33.33%, #fbff00 33.33%, #fbff00 66.66%, #ff0000 66.66%);
+        }
+
+        .bandiera_tedesca {
+            height: 100px;
+            width: 150px;
+            text-align: justify;
+            background: linear-gradient(#000000 33.33%, #ff0000 33.33%, #ff0000 66.66%, #fffb00ef 66.66%);
+        }
+
+        .bandiera_francese {
+            height: 100px;
+            width: 150px;
+            background: linear-gradient(to right, #00008B 33.33%, #F1F2F1 33.33%, #F1F2F1 66.66%, #CE2B37 66.66%);
+        }
     </style>
+
+
+
+    <script type=text/javascript>
+        nazioni = ["Italia", "Germania", "Spagna", "Francia"];
+        console.log(nazioni);
+        function onSubmit() {
+            let inputNazione = document.getElementById("nazione").value;
+            nazioni.forEach((nazione) => {
+                if (nazione === inputNazione) {
+                    alert("Nazione trovata!");
+                }
+            })
+        }
+
+        function searchNazione() {
+            if (inputNazione != nazioni){
+                alert("Nessuna corrispondenza");
+            }
+            var elementSearchNazione = document.getElementById("searchNome");
+            if (elementSearchNazione === null){
+            }
+            var nome = elementSearchNazione.value;
+            if (nazione === ''){
+                alert("Inserisci valore del campo nome per effettuare una ricerca");
+            }
+            for (var nazione of nazioni) {
+                if (inputNazione === nazione) {
+                    console.log(nazione);
+                }
+            }
+        }
+
+        function searchByNome() {
+            if (persone == undefined || persone.length == 0)
+                alert("Nessuna persona presente in archivio");
+            var elementSearchNome = document.getElementById("searchNome");
+            if (elementSearchNome == null)
+                return;
+            var nome = elementSearchNome.value;
+            if (nome == '')
+                alert("Inserisci valore del campo nome per effettuare una ricerca");
+            for (var persona of persone) {
+                if (persona.nome == nome) {
+                    console.log(persona);
+                }
+            }
+        }
+    </script>
 
 </head>
 
 <body>
-    <h1>Compila il modulo!</h1>
-    <label>Inserisci il tuo nome:</label>
-    <input type="text" id="name" placeholder="Inserisci nome" />
-    <br /> <br />
-    <label>Inserisci il tuo cognome:</label>
-    <input type="text" id="surname" placeholder="Inserisci cognome" />
-    <button onclick="onSubmit()">Invio</button>
 
-    <script>
-        function onSubmit() {
-            event.preventDefault();
-            var inputNome = document.getElementById("name").value;
-            var inputCognome = document.getElementById("surname").value;
-            console.log("ciao " + inputNome + " " + inputCognome);
-            document.write("ciao " + inputNome + " " + inputCognome);
-        }
-    </script>
+    <h1>Ricerca Nazione</h1>
+    <fieldset>
+        <ul class="flex-container">
+            <li>
+                <label>Salva Nazione</label>
+                <input type="text" id="nazione" placeholder="Inserisci Nazione" />
+                <input type="button" value="Invio" onlick="onSubmit()" id="submit" />
+            </li>
+
+            <li>
+                <label>Ricerca Nazione</label>
+                <input type="text" id="inserisci_nazione" placeholder="Inserisci Nazione" />
+                <input type="button" value="Invio" onclick="searchNazione()" id="submit" />
+
+            </li>
+
+            <div class="bandiera_italiana"></div>
+            <div class="bandiera_francese"></div>
+            <div class="bandiera_spagnola"></div>
+            <div class="bandiera_tedesca"></div>
+        </ul>
+    </fieldset>
+
 </body>
 
 </html>
